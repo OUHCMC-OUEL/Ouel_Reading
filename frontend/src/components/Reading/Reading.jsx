@@ -13,7 +13,7 @@ function Reading() {
 
             <div className="right">
                  {passage ? (
-                    <Quiz passage={passage} key={passage.id} />
+                    <Quiz passage={passage} key={passage?.id} />
                 ) : ( <div>Đang tải...</div>)}
             </div>
             

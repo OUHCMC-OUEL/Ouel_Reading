@@ -27,17 +27,14 @@ export default function Quiz({ passage }) {
   }
   const question=questions[index]
   const next = () => {
-    if (index<=questions.length) {
+    if (index<questions.length) {
       setIndex(++index);
       question = questions[index];
       // setLock(false);
     }
-    else{
-       question = questions[index];
-    }
   }
   const prev = () => {
-    if (lock === true) {
+    if (index>0) {
       setIndex(--index);
       question = questions[index];
       // setLock(false);
@@ -61,7 +58,7 @@ export default function Quiz({ passage }) {
         <li>{question.option_c}</li>
         <li>{question.option_d}</li>
       </ul>
-      <button onClick={next}>Prev</button>
+      <button onClick={prev}>Prev</button>
       <button onClick={next}>Next</button>
       <div className="index">{index + 1} of {questions.length} Câu hỏi</div>
     </div>
