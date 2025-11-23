@@ -27,18 +27,18 @@ export default function Quiz({ passage }) {
   }
   const question=questions[index]
   const next = () => {
-    if (index<questions.length) {
+    if (index<=questions.length) {
       setIndex(++index);
-      question = questions[index];
       // setLock(false);
     }
+    question = questions[index];
   }
   const prev = () => {
     if (index>0) {
       setIndex(--index);
-      question = questions[index];
       // setLock(false);
     }
+    question = questions[index];
   }
 
   const checkAns=(e,ans)=>{
