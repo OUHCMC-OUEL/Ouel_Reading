@@ -2,8 +2,7 @@ from rest_framework import viewsets, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from reading.models import Passage, Question, UserAnswer,QuizAttempt
-from reading import serializers, gemini
-from .gemini import GeminiService
+from reading import serializers
 
 class PassageViewSet(viewsets.ModelViewSet, generics.ListAPIView):
     queryset = Passage.objects.all()
