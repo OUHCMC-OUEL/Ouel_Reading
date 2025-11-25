@@ -1,4 +1,9 @@
 # Báo cáo 25/11/2015
+## Chạy project
+- mở git bash
+- chạy lệnh
+  chmod +x start.sh
+  ./start.sh
 
 ## Điều đã làm
 - Giao diện đơn giản
