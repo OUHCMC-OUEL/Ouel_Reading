@@ -2,8 +2,8 @@
 ## Chạy project
 - mở git bash
 - chạy lệnh
-  chmod +x start.sh
-  ./start.sh
+- chmod +x start.sh
+- ./start.sh
 
 ## Điều đã làm
 - Giao diện đơn giản
