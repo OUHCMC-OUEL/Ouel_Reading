@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+=======
+# Báo cáo 25/11/2015
+## Chạy project
+- Tạo schemas tên "oueldb"
+- mở git bash
+- chạy lệnh
+- chmod +x start.sh
+- ./start.sh
+
+## Điều đã làm
+- Giao diện đơn giản
+- UI đã gọi api được từ backend và lấy được dữ liệu được từ database
+  
+## Điều chưa làm
+- Chưa nghiên cứu gemini
+- Chưa xong một vài chức năn
+- Chưa chuyển css qua tailwind
+
+>>>>>>> f6088a18470a08465a6e1317b2c2a841ac28b658
 
 # Công cụ sử dụng
 
