@@ -11,7 +11,8 @@ export default function Quiz({ passage }) {
   const [userAnswers, setUserAnswers] = useState({});
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
-  const [visibleOptions, setVisibleOptions] = useState(['A', 'B', 'C', 'D']);
+  const [suggestionOptions, setsuggestionOptions] = useState(['A', 'B', 'C', 'D']);
+  const [suggestioned,setSuggestioned]= useState(false);
 
 
   const OptionA = useRef(null);
@@ -93,7 +94,8 @@ export default function Quiz({ passage }) {
     const newIndex = index + 1;
     setIndex(newIndex);
     setQuestion(questions[newIndex]);
-    setVisibleOptions(['A', 'B', 'C', 'D']);
+    setsuggestionOptions(['A', 'B', 'C', 'D']);
+    setSuggestioned(false);
     resetOptions();
     setTimeout(() => SavedAnswer(newIndex));
   };
@@ -105,20 +107,25 @@ export default function Quiz({ passage }) {
     const newIndex = index - 1;
     setIndex(newIndex);
     setQuestion(questions[newIndex]);
-    setVisibleOptions(['A', 'B', 'C', 'D']);
+    setsuggestionOptions(['A', 'B', 'C', 'D']);
+    setSuggestioned(false);
     resetOptions();
     setTimeout(() => SavedAnswer(newIndex));
   };
 
   const useFiftyFifty = () => {
+    if (lock) return;
+    if(suggestioned) return;
     const correct = question.correct_answer;
     const wrongOptions = ['A', 'B', 'C', 'D'].filter(opt => opt !== correct);
     const randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
-    setVisibleOptions([correct, randomWrong]);
+    setsuggestionOptions([correct, randomWrong]);
+    setSuggestioned(true);
   }
 
 
   const reset = () => {
+    setsuggestionOptions(['A', 'B', 'C', 'D']);
     setIndex(0);
     setQuestion(questions[0]);
     setLock(false);
@@ -126,8 +133,6 @@ export default function Quiz({ passage }) {
     setScore(0);
     setResult(false);
     resetOptions();
-    setVisibleOptions(['A', 'B', 'C', 'D']);
-
   }
 
   return (
@@ -145,10 +150,10 @@ export default function Quiz({ passage }) {
           <h2>{index + 1}. {question.question_text}</h2>
 
           <ul>
-            <li ref={OptionA} onClick={(e) => checkAns(e, "A")} className={!visibleOptions.includes("A") ? "hidden" : ""}>{question.option_a}</li>
-            <li ref={OptionB} onClick={(e) => checkAns(e, "B")} className={!visibleOptions.includes("B") ? "hidden" : ""}>{question.option_b}</li>
-            <li ref={OptionC} onClick={(e) => checkAns(e, "C")} className={!visibleOptions.includes("C") ? "hidden" : ""}>{question.option_c}</li>
-            <li ref={OptionD} onClick={(e) => checkAns(e, "D")} className={!visibleOptions.includes("D") ? "hidden" : ""}>{question.option_d}</li>
+            <li ref={OptionA} onClick={(e) => checkAns(e, "A")} className={!suggestionOptions.includes("A") ? "hidden" : ""}>{question.option_a}</li>
+            <li ref={OptionB} onClick={(e) => checkAns(e, "B")} className={!suggestionOptions.includes("B") ? "hidden" : ""}>{question.option_b}</li>
+            <li ref={OptionC} onClick={(e) => checkAns(e, "C")} className={!suggestionOptions.includes("C") ? "hidden" : ""}>{question.option_c}</li>
+            <li ref={OptionD} onClick={(e) => checkAns(e, "D")} className={!suggestionOptions.includes("D") ? "hidden" : ""}>{question.option_d}</li>
           </ul>
           {lock ? (
             <div className="explanation">
