@@ -4,11 +4,11 @@ python -m venv venv
 
 pip install -r requirements.txt
 
-cd backend
+cd DjangoBackend
 python manage.py migrate
 python manage.py loaddata data.json
 python manage.py runserver &
 
-cd ../frontend
+cd ../ViteReadingApp
 npm install
 npm run dev
