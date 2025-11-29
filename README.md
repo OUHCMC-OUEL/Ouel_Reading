@@ -1,5 +1,6 @@
 # Báo cáo 25/11/2015
 ## Chạy project
+- Tạo schemas tên "oueldb"
 - mở git bash
 - chạy lệnh
 - chmod +x start.sh
